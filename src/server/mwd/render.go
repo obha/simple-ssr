@@ -13,32 +13,40 @@ func RenderMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		vm := goja.New()
 
-		file, err := ioutil.ReadFile("dist/server.js")
+		file, err := ioutil.ReadFile("public/server.js")
 
-		Must(err)
+		c.Set("error", Must(err))
 
 		_, err = vm.RunString(string(file))
 
-		Must(err)
+		c.Set("error", Must(err))
 
 		module := vm.Get("server")
 
 		renderJS := module.ToObject(vm).Get("render")
 
-		exclude, _ := goja.AssertFunction(renderJS)
+		exclude, ok := goja.AssertFunction(renderJS)
 
-		html, err := exclude(nil, vm.ToValue(c.Request.RequestURI))
+		if ok {
+			html, err := exclude(nil, vm.ToValue(c.Request.RequestURI))
 
-		Must(err)
+			c.Set("error", Must(err))
 
-		htmlString := html.Export().(string)
+			htmlString := html.Export().(string)
 
-		c.Set("HTML", htmlString)
+			c.Set("HTML", htmlString)
+
+			c.Next()
+		}
+
+		c.Set("error", "render methode cannot be executed")
+
 	}
 }
 
-func Must(err error) {
+func Must(err error) string {
 	if err != nil {
-		panic(err)
+		return err.Error()
 	}
+	return ""
 }

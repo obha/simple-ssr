@@ -17,7 +17,7 @@ module.exports = {
     extensions: ['*', '.js', '.jsx']
   },
   output: {
-    path: path.resolve(__dirname, '..','..','dist'),
+    path: path.resolve(__dirname, '..','..','public'),
     libraryTarget: "umd",
     library: "server",
     filename: 'server.js',

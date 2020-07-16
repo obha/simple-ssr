@@ -17,11 +17,7 @@ export default props => {
         </ul>
   
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={Home}
-          />
+          <Route path="/" render={Home} exact />
           <Route path="/users" component={Users} />
           <Route path="/about" component={About} />
         </Switch>
@@ -33,8 +29,18 @@ const Home = () =>{
   return <h1>Home</h1>
 }
 
-const Users = ()=>{
-    return <h1>User</h1>
+class Users extends React.Component{
+  state = {
+    
+  }
+  render(){
+    return (
+      <div>
+        <h1>User</h1>
+        <button>login</button>
+      </div>
+    )
+  } 
 }
 
 const About = () =>{

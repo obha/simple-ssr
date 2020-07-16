@@ -20,13 +20,21 @@ func NewApp() *App {
 
 	r.Static("/", "public")
 
-	r.LoadHTMLFiles("public/index.html")
+	r.LoadHTMLFiles("public/index.html", "public/500.html")
 
 	r.NoRoute(func(c *gin.Context) {
 		htmlString := c.MustGet("HTML").(string)
+		errorString := c.MustGet("error").(string)
+
+		if errorString != "" {
+			c.HTML(500, "500.html", gin.H{
+				"__ERROR__": errorString,
+			})
+		}
 
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"HTML": template.HTML(htmlString),
+			"__TITLE__": "Influlook",
+			"__HTML__":  template.HTML(htmlString),
 		})
 	})
 
