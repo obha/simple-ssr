@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack --watch --config ./webpack.config.js",
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "build": "webpack --config ./webpack.config.js ",
-    "test": "echo \"No test specified\" && exit 0"
+    "watch": "webpack --watch --config config/webpack/server.js && webpack --watch --config config/webpack/client.js",
+    "start": "webpack-dev-server --config config/webpack/server.js --mode development",
+    "build": "webpack --config config/webpack/server.js && webpack --config config/webpack/client.js"
   },
   "keywords": [],
   "author": "",
@@ -23,16 +22,18 @@
     "babel-loader": "^8.0.6",
     "react-hot-loader": "^4.12.19",
     "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
     "@babel/runtime": "^7.10.5",
     "core-js": "^3.6.5",
     "escape-string-regexp": "^4.0.0",
+    "infrastructure-components": "^0.3.11",
     "raf-polyfill": "^1.0.0",
     "react": "^16.13.0",
     "react-app-polyfill": "^1.0.6",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
   }
 }

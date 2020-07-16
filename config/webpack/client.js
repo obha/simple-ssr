@@ -1,9 +1,8 @@
-const webpack = require('webpack');
-
+const path = require('path');
 module.exports = {
   entry: [
     "@babel/polyfill",
-    './src/index.js'
+    './src/client'
   ],
   module: {
     rules: [
@@ -18,15 +17,8 @@ module.exports = {
     extensions: ['*', '.js', '.jsx']
   },
   output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
-    libraryTarget: "var",
-    library: "server",
-    globalObject: "this",
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, '..','..','public'),
+    filename: 'client.js'
   },
-  devServer: {
-    contentBase: './dist',
-    hot: true
-  }
+  
 };
