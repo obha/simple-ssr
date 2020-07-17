@@ -15,11 +15,11 @@ func RenderMiddleware() gin.HandlerFunc {
 
 		file, err := ioutil.ReadFile("public/server.js")
 
-		c.Set("error", Must(err))
+		Must(c, err)
 
 		_, err = vm.RunString(string(file))
 
-		c.Set("error", Must(err))
+		Must(c, err)
 
 		module := vm.Get("server")
 
@@ -28,11 +28,11 @@ func RenderMiddleware() gin.HandlerFunc {
 		exclude, ok := goja.AssertFunction(renderJS)
 
 		if ok {
-			html, err := exclude(nil, vm.ToValue(c.Request.RequestURI))
+			rendered, err := exclude(nil, vm.ToValue(c.Request.RequestURI))
 
-			c.Set("error", Must(err))
+			Must(c, err)
 
-			htmlString := html.Export().(string)
+			htmlString := rendered.Export().(string)
 
 			c.Set("HTML", htmlString)
 
@@ -44,9 +44,12 @@ func RenderMiddleware() gin.HandlerFunc {
 	}
 }
 
-func Must(err error) string {
+func Must(c *gin.Context, err error) {
 	if err != nil {
-		return err.Error()
+		c.Set("error", err.Error())
+		c.Set("HTML", "")
+		c.Next()
+		return
 	}
-	return ""
+
 }

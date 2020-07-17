@@ -5,6 +5,8 @@ github.com/dlclark/regexp2 v1.2.0/go.mod h1:2pZnwuY/m+8K6iRw6wQdMtk+rH5tNGR1i55k
 github.com/dop251/goja v0.0.0-20191203121440-007eef3bc40f/go.mod h1:Mw6PkjjMXWbTj+nnj4s3QPXq1jaT0s5pC0iFD4+BOAA=
 github.com/dop251/goja v0.0.0-20200714104027-1f8a2ffe986f h1:JoAX7mr7FjW6/o1PNflyKePZP9dBvT3+OaDKLrkZ0RY=
 github.com/dop251/goja v0.0.0-20200714104027-1f8a2ffe986f/go.mod h1:Mw6PkjjMXWbTj+nnj4s3QPXq1jaT0s5pC0iFD4+BOAA=
+github.com/dop251/goja_nodejs v0.0.0-20200706082813-b2775b86b9e0 h1:pv6LV8EpCUidi+hWGjAgaz7L2YCEEPfq8+VEl8wLaqQ=
+github.com/dop251/goja_nodejs v0.0.0-20200706082813-b2775b86b9e0/go.mod h1:hn7BA7c8pLvoGndExHudxTDKZ84Pyvv+90pbBjbTz0Y=
 github.com/gin-contrib/sse v0.1.0 h1:Y/yl/+YNO8GZSjAhjMsSuLt29uWRFHdHYUb5lYOV9qE=
 github.com/gin-contrib/sse v0.1.0/go.mod h1:RHrZQHXnP2xjPF+u1gW/2HnVO7nvIa9PG3Gm+fLHvGI=
 github.com/gin-gonic/gin v1.6.3 h1:ahKqKTFpO5KTPHxWZjEdPScmYaGtLo8Y4DMHoEsnp14=
